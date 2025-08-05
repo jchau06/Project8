@@ -1,6 +1,6 @@
 import "./Home.css";
 import Post from "../components/Post";
-
+import { formatDistanceToNow, parseISO } from 'date-fns';
 import { useState } from "react";
 
 const Home = ({ data }) => {
@@ -44,7 +44,7 @@ const Home = ({ data }) => {
             <Post
               key={post.id}
               id={post.id}
-              time={post.time}
+              time={formatDistanceToNow(parseISO(post.created_at), { addSuffix: true })}
               title={post.title}
               upvotes={post.upvotes}
             />

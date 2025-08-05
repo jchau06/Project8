@@ -1,17 +1,22 @@
 import "./Detailed-Post.css";
+import { Link } from "react-router-dom";
 
-const DetailedPost = ({ title, time, image, content, comments, upvotes }) => {
+const DetailedPost = ({ id, title, time, image, content, comments, upvotes }) => {
   return (
     <div className="detailed-post-container">
       <div className="post-header">
         <h2 className="post-title">{title}</h2>
         <div className="post-header-buttons">
             <button className='upvote-button'>👍 Upvote Post</button>
-            <button className="edit-button">✏️ Edit Post</button>
-            <button className="delete-button">🗑️ Delete Post</button>
+            <Link to={`/post/${id}/edit`}>
+                <button className="edit-button">✏️ Edit Post</button>
+            </Link>
+            <Link to='/'>
+                <button className="delete-button">🗑️ Delete Post</button>
+            </Link>
         </div>
       </div>
-      <p className="post-time">Posted {time} ago</p>
+      <p className="post-time">Posted {time}</p>
       <p className="post-content">{content}</p>
       <img src={image} alt={title} className="post-image" />
       <p className='upvotes-text'>{upvotes} Upvotes</p>
