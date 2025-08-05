@@ -1,22 +1,45 @@
 import "./Edit-Post.css";
 import { useState } from "react";
+import { supabase } from "../client"; 
 
-const EditPost = ({ title: initialTitle, content: initialContent, image: initialImage }) => {
+const EditPost = ({
+  title: initialTitle,
+  content: initialContent,
+  image: initialImage,
+  id,
+}) => {
   const [title, setTitle] = useState(initialTitle || "");
   const [content, setContent] = useState(initialContent || "");
   const [imageUrl, setImageUrl] = useState(initialImage || "");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     const editedPost = {
       title,
       content,
-      image: imageUrl,
+      image_url: imageUrl,
     };
 
-    console.log("Post edited!", editedPost);
-    window.location = "/";
+    const { error } = await supabase
+      .from("posts")
+      .update(editedPost)
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error updating post:", error);
+      setError("Failed to update post. Please try again.");
+      setLoading(false);
+      return;
+    }
+
+    setLoading(false);
+    
+    window.location.href = `/post/${id}`;
   };
 
   return (
@@ -29,12 +52,14 @@ const EditPost = ({ title: initialTitle, content: initialContent, image: initial
           onChange={(e) => setTitle(e.target.value)}
           required
           className="title-input"
+          disabled={loading}
         />
         <textarea
           placeholder="Content (Optional)"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="content-input"
+          disabled={loading}
         />
         <input
           type="text"
@@ -42,8 +67,12 @@ const EditPost = ({ title: initialTitle, content: initialContent, image: initial
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           className="image-input"
+          disabled={loading}
         />
-        <button type="submit">Edit Post</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Updating..." : "Edit Post"}
+        </button>
+        {error && <p className="error-text">{error}</p>}
       </div>
     </form>
   );

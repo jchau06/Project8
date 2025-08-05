@@ -1,3 +1,4 @@
+import { supabase } from "../client";
 import "./Create-Post.css";
 import { useState } from "react";
 
@@ -6,20 +7,25 @@ const CreatePost = () => {
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle post creation logic here
-    const newPost = {
-      title,
-      content,
-      image: imageUrl,
-    };
-    console.log("Post created!", newPost);
-    // Reset form or redirect as needed
-    // setTitle("");
-    // setContent("");
-    // setImageUrl("");
-    window.location = "/";
+
+    const { data, error } = await supabase
+        .from('posts')
+        .insert({
+            title: title,
+            content: content,
+            image_url: imageUrl,
+            comments: []
+        }).single();
+
+        if (error) {
+            console.error("Error creating post:", error)
+            return;
+        }
+
+    console.log("Inserted data:", data);
+    window.location = '/';
   };
 
   return (

@@ -57,7 +57,6 @@
     cursor: pointer;
     background: #f7f7f7;
     color: #333;
-    transition: background 0.2s;
 }
 .edit-button:hover {
     background: #ffe0b2;

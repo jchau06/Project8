@@ -20,13 +20,6 @@
     margin: 0 1rem 0 0;
 }
 
-.header-center {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .search-bar {
     padding: 0.5em 1em;
     border-radius: 20px;

@@ -29,13 +29,13 @@ const PostPage = () => {
         ? data.image_url
         : supabase.storage.from('post-images').getPublicUrl(data.image_url).data.publicUrl;
 
-      // Format the created_at timestamp to relative time string
+      
       const relativeTime = formatDistanceToNow(parseISO(data.created_at), { addSuffix: true });
 
       setPost({
         ...data,
         image,
-        relativeTime,   // add this new formatted field
+        relativeTime,   
       });
     };
 
@@ -48,7 +48,7 @@ const PostPage = () => {
     <DetailedPost
       id={post.id}
       title={post.title}
-      time={post.relativeTime}   // pass the formatted relative time string
+      time={post.relativeTime}   
       image={post.image}
       content={post.content}
       comments={post.comments || []}
