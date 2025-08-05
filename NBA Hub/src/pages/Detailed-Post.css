@@ -1,0 +1,134 @@
+.enter-comment {
+    width: 100%;
+    margin-top: 1.2rem;
+    padding: 0.7em 1em;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box;
+    background: #fff;
+    transition: border-color 0.2s;
+}
+.enter-comment:focus {
+    border-color: #5d64e3;
+    background: #f9f9f9;
+}
+ .upvote-button {
+    padding: 0.4em 1em;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    background: #f7f7f7;
+    color: #333;
+    transition: background 0.2s;
+}
+.upvote-button:hover {
+    background: #e0f7fa;
+}
+/* Post header flex layout */
+.post-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.post-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.post-header-buttons {
+    display: flex;
+    gap: 0.7rem;
+}
+.edit-button, .delete-button {
+    padding: 0.4em 1em;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    background: #f7f7f7;
+    color: #333;
+    transition: background 0.2s;
+}
+.edit-button:hover {
+    background: #ffe0b2;
+}
+.delete-button {
+    background: #ffeaea;
+    color: #b22222;
+}
+.delete-button:hover {
+    background: #ffcccc;
+}
+/* Container similar to post-container */
+.detailed-post-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin: 2.5rem auto;
+    padding: 2rem 2.5rem;
+    width: 65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.post-title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0.2rem 0 0.7rem 0;
+    color: #222;
+}
+
+.post-time {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.post-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 1rem 0;
+    align-self: left;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+.post-content {
+    font-size: 1.15rem;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+ .comments-section {
+    width: 62rem;
+    margin-top: 1.5rem;
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.comment-text {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 0.7rem;
+}
+
+.no-comments-text {
+    color: #aaa;
+    font-style: italic;
+}

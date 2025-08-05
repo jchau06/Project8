@@ -1,0 +1,36 @@
+/* No posts text styling */
+.no-posts-text {
+    margin-top: 2rem;
+    text-align: center;
+    color: #888;
+    font-size: 1.3rem;
+}
+/* Order container styles */
+.order-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+.order-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.new-button, .popular-button {
+    background-color: rgb(235, 93, 93);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.order-container .selected {
+    background-color: #b22222;
+}
